@@ -1,0 +1,72 @@
+﻿@page
+@model WaterLogger.Pages.UpdateModel
+@{
+}
+
+<h4>Update Record</h4>
+<hr>
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="DrinkingWater.Date" class="col-form-label"></label>
+                <input asp-for="DrinkingWater.Date" class="form-control">
+                <span asp-validation-for="DrinkingWater.Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DrinkingWater.Quantity" class="col-form-label"></label>
+                <div class="input-group">
+                    <input asp-for="DrinkingWater.Quantity" class="form-control w-auto">
+                    <select asp-for="DrinkingWater.Unit" class="form-select float-end">
+                        <option selected disabled hidden>Select Unit</option>
+                        <optgroup class="form-control" label="Metric units">
+                            <option value="mL" title="millilitre">mL</option>
+                            <option value="L" title="litre">L</option>
+                            <option value="mm³" title="cubic millimeter">mm³</option>
+                            <option value="cm³" title="cubic centimeter">cm³</option>
+                            <option value="in³" title="cubic inch">in³</option>
+                            <option value="ft³" title="cubic feet">ft³</option>
+                            <option value="m³" title="cubic meter">m³</option>
+                            <option value="yd³" title="cubic yard">yd³</option>
+                        </optgroup>
+                        <hr>
+                        <option value=""></option>
+                        <optgroup label="U.S. customary units">
+                            <option value="fl.oz" title="fluid ounce">fl oz</option>
+                            <option value="pts" title="point">pt</option>
+                            <option value="cup" title="cup">cup</option>
+                            <option value="qts" title="quarter">qt</option>
+                            <option value="gal" title="gallon">gal</option>
+                            <option value="tbsp" title="tablespoon">tbsp</option>
+                            <option value="tsp" title="teaspoon">tsp</option>
+                        </optgroup>
+                        <hr>
+                        <option value=""></option>
+                        <optgroup label="Imperial units">
+                            <option value="ifloz" title="fluid ounce">fl oz</option>
+                            <option value="ipts" title="point">pt</option>
+                            <option value="icup" title="cup">cup</option>
+                            <option value="iqts" title="quarter">qt</option>
+                            <option value="igal" title="gallon">gal</option>
+                            <option value="itbsp" title="tablespoon">tbsp</option>
+                            <option value="itsp" title="teaspoon">tsp</option>
+                        </optgroup>
+
+                    </select>
+                </div>
+                <span asp-validation-for="DrinkingWater.Quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-success">
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
